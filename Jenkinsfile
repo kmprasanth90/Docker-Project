@@ -26,7 +26,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-           docker.withRegistry([ credentialsId: "kmpdocker", url: ""]) { 
+           withDockerRegistry([ credentialsId: "kmpdocker", url: ""]) {
             dockerImage.push()
           }
         }
