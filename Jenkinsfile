@@ -3,6 +3,7 @@ pipeline {
   environment {
     registry = "10.138.0.3:5001/prasanth1290/flask"
     registry_mysql = "10.138.0.3:5001/prasanth1290/mysql"
+    DOCKERHUB_CREDENTIALS= credentials('kmpdocker')	  
     dockerImage = ""
   }
 
@@ -22,9 +23,7 @@ pipeline {
         }
       }
     }
- environment {     
-    DOCKERHUB_CREDENTIALS= credentials('kmpdocker')     
- } 
+
  stage('Login to Docker Hub') {      	
      steps{                       	
 	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
