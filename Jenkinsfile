@@ -22,12 +22,14 @@ pipeline {
         }
       }
     }
-
+environment {     
+    DOCKERHUB_CREDENTIALS= credentials('kmpdocker')     
+} 
     stage('Push Image') {
       steps{
         script {
-           withDockerRegistry([ credentialsId: "kmpdocker", url: ""]) {
-            dockerImage.push()
+          docker.withRegistry( "" ) {
+            dockerImage.push()  
           }
         }
       }
