@@ -1,8 +1,8 @@
 pipeline {
 
   environment {
-    registry = "10.138.0.3:5001/prasanth1290/flask"
-    registry_mysql = "10.138.0.3:5001/prasanth1290/mysql"
+    registry = "prasanth1290/flask"
+    registry_mysql = "prasanth1290/mysql"
     DOCKERHUB_CREDENTIALS= credentials('kmpdocker')	  
     dockerImage = ""
   }
@@ -49,8 +49,8 @@ pipeline {
    }
    stage('Build mysql image') {
      steps{
-       sh 'docker build -t "10.138.0.3:5001/prasanth1290/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
-        sh 'docker push "10.138.0.3:5001/prasanth1290/mysql:$BUILD_NUMBER"'
+       sh 'docker build -t "prasanth1290/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
+        sh 'docker push "prasanth1290/mysql:$BUILD_NUMBER"'
         }
       }
     stage('Deploy App') {
